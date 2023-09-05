@@ -8,7 +8,7 @@
     <h1>Create a Member</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}  <!-- Render the form fields as paragraphs (customize as needed) -->
+        {{ form.as_p }}
         <input type="submit" value="Add Member">
     </form>
 </body>
