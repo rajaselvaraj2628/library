@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library - List of Books</title>
+</head>
+<body>
+<ul>
+    <form method="get" action="{% url 'library:create_book' %}">
+        {{ form.as_p }}
+        <button type="submit">Add a Book</button>
+    </form>
+    <form method="get" action="{% url 'library:search_books' %}">
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+</ul>
+    <h1>List of Books</h1>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }} by {{ book.author }} (Quantity: {{ book.quantity }}) (ISBN: {{ book.isbn }})</li>
+        {% empty %}
+            <li>No books available</li>
+        {% endfor %}
+    </ul>
+<a href="{% url 'library:book_list' %}">Back to Book List</a>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</body>
+</html>

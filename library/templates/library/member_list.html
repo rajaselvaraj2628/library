@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library - List of Members</title>
+</head>
+<body>
+    <h1>List of Members</h1>
+    <ul>
+        {% for member in members %}
+            <li>{{ member.name }}</li>
+        {% empty %}
+            <li>No members found</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

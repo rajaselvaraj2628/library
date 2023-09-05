@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book</title>
+    <!-- Include your CSS styling here, if any -->
+</head>
+<body>
+    <h1>Update Book Information</h1>
+
+    <form method="post" action="{% url 'library:update_book' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Update Book</button>
+    </form>
+
+    <a href="{% url 'library:book_list' %}">Back to Book List</a>
+</body>
+</html>

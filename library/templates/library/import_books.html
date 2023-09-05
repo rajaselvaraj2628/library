@@ -1,0 +1,26 @@
+<!-- library/import_books.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Import</title>
+</head>
+<body>
+    <h1>Import Books</h1>
+
+    <!-- Display Django messages here -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post" action="{% url 'library:book_import' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Import</button>
+    </form>
+    <a href="{% url 'library:book_list' %}">Back to Book List</a>
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<h2>Search For a Book :</h2>
+{% load static %}
+<form method="get" action="{% url 'library:search_books' %}">
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+
+{% if books %}
+    <h2>Search Results:</h2>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }} by {{ book.author }} ISBN: {{ book.isbn }}</li>
+
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No books found.</p>
+{% endif %}

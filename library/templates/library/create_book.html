@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create a Book</title>
+</head>
+<body>
+    <h1>Create a Book</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Render the form fields as paragraphs (you can style this as needed) -->
+        <input type="submit" value="Add Book">
+    </form>
+    <a href="{% url 'library:book_list' %}">Back to Book List</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% load static %}
+<!-- library/return_book.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Book</title>
+</head>
+<body>
+    <h1>Return Book</h1>
+
+    <form method="post" action="{% url 'library:return_book' %}">
+        {% csrf_token %}
+
+        <label for="book_id">Book ID:</label>
+        <input type="text" id="book_id" name="book_id" required>
+
+        <label for="member_id">Member ID:</label>
+        <input type="text" id="member_id" name="member_id" required>
+
+        <button type="submit">Return Book</button>
+    </form>
+    <a href="{% url 'library:book_list' %}">Back to Book List</a>
+</body>
+</html>
